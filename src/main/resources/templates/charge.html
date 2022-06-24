@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
+<title>Home</title>
+<link rel="stylesheet" type="text/css" href="css/virtual-select.min.css">
+<link rel="stylesheet" type="text/css" href="cssz/main.css">
+<link href="css/charge.css" rel="stylesheet">
+</head>
+<body>
+
+
+
+<div class="card card-4" style="margin: 4rem 4rem 4rem 4rem;">
+    <div class="card-body">
+        <h2 class="title">Violation Form</h2>
+        <form method="POST">
+            <div class="row row-space">
+                <div class="col-2">
+                    <div class="input-group">
+                        <label class="label">Plate</label>
+                        <input class="input--style-4" type="text" name="plateNo">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="input-group">
+                        <label class="label">Violation</label>
+                          <select id="multi_option" multiple name="native-select" placeholder="Violation Options" data-silent-initial-value-set="false"
+                          	th:each="violationCode : ${violationCodes}">
+                          	
+                            <option th:text="${violationCode.description}"
+                            	th:name="${violationCode.id}"
+                            	th:id="${violationCode.id}">
+                            	Default
+                            </option>
+                            
+                          </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row row-space">
+                <div class="col-2">
+                    <div class="input-group">
+                        <label class="label">Date</label>
+                        <input class="input--style-4" type="date" name="date" >
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="input-group">
+                        <label class="label">Violation codes</label>
+                        <input class="input--style-4" type="text" name="phone" disabled="true">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-t-15">
+                <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                <button class="btn btn--radius-2 btn--blue" type="button" id="btnz">Back</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script src="js/charge.js"></script>
+
+<script type="text/javascript" src="js/virtual-select.min.js"></script>
+<script type="text/javascript">
+    VirtualSelect.init({ 
+      ele: '#multi_option' 
+    });
+</script>
+<script type="text/javascript">
+            document.getElementById("btnz").onclick = function () {
+                location.href = "index.html";
+            };
+        </script>
+</body>
+</html>

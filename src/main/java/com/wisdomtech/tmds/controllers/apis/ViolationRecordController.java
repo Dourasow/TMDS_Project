@@ -57,4 +57,5 @@ public class ViolationRecordController {
     public ViolationRecord findByPlateNo(@PathVariable("plateNo") String plateNo){
         return violationRecordService.findByPlateNo(plateNo);
     }
+    
 }

@@ -29,7 +29,7 @@ public class SearchRecordsController {
 
     @GetMapping("/searchRecord")
     public RedirectView search(@RequestParam("plateNo") String plateNo, RedirectAttributes redirectAttributes){
-        RedirectView redirectView = new RedirectView("/index", true);
+        RedirectView redirectView = new RedirectView("/home", true);
 
         System.out.println("Plate Number: " + plateNo);
 

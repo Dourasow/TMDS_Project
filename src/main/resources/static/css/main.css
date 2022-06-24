@@ -1,25 +1,3 @@
-.form-wrapper{
-	/*border: 2px solid red;*/
-	margin: 3rem;
-	margin-top: 2rem;
-}
-
-.content-details{
-	/*border: 1px solid red;*/
-	align-self: center;
-}
-
-.content-details .card .card-body{
-	border: 1px solid blue;
-}
-span{
-	position: absolute;
-	margin-left: 220px;
-	height: 39px;
-	display: flex;
-	align-items: center;
-}
-
 * {box-sizing: border-box;}
 
 .mySlides {display: none;}
@@ -81,4 +59,78 @@ img {vertical-align: middle;}
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
   .text {font-size: 11px}
+}
+*,*:after,*:before{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+body{
+	font-family: arial;
+	font-size: 16px;
+	margin: 0;
+	
+}
+.form-wrapper{
+	/*border: 2px solid red;*/
+		margin-top: 4rem;
+}
+
+.content-details{
+	/*border: 1px solid red;*/
+	align-self: center;
+}
+
+.content-details .card .card-body{
+	border: 1px solid blue;
+}
+span{
+	position: absolute;
+	margin-left: 225px;
+	height: 39px;
+	display: flex;
+	align-items: center;
+}
+#multi_option{
+	max-width: 100%;
+	width: 350px;
+}
+label{
+	display:block;
+	font-size: 18px;
+	font-weight: 700;
+	margin-bottom: 5px;
+}
+.vscomp-toggle-button{
+	padding: 10px 30px 10px 10px;
+	border-radius: 5px;
+}
+
+@media (max-width: 427px){
+	span{
+	position: absolute;
+	margin-left: 195px;
+	height: 39px;
+	display: flex;
+	align-items: center;
+}
+}
+@media (max-width: 395px){
+	span{
+	position: absolute;
+	margin-left: 155px;
+	height: 39px;
+	display: flex;
+	align-items: center;
+}
+}
+@media (max-width: 351px){
+	span{
+	position: absolute;
+	margin-left: 125px;
+	height: 39px;
+	display: flex;
+	align-items: center;
+}
 }
