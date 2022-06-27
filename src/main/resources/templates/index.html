@@ -114,6 +114,9 @@
                                 <div class="text-danger" th:if="${responseMessage} != null">
                                     <h4>[[${responseMessage}]]</h4>
                                 </div>
+                                <div>
+                                	<h4 class="text-primary">[[${receipt}]]</h4>
+                                </div>
                                 <form th:action = "@{/searchRecord}" th:method="Get">
                                    <div class="form-group col-lg-8 mb-4">
                                        <!-- <label for="plate">Plate</label> -->
@@ -172,12 +175,12 @@
                                             <h5 class="card-title">Violation Record</h5>
                                             <hr>
                                             Plate: 
-                                                  <input type="text" class="form-control" th:value="${violationRecord?.plateNo} ?: 'No Record'" placeholder="REX9988998" disabled="true" />
+                                                  <input type="text" class="form-control" th:value="${plateNo} ?: 'No Record'" placeholder="REX9988998" disabled="true" />
                                             Status:
                                             <span>
-                                                <img th:src="${violationRecord?.status}? @{https://img.icons8.com/color/20/000000/ok--v1.png} : @{https://img.icons8.com/color/20/000000/cancel--v1.png}"/>
+                                                <img th:src="${violationStatus} == 'clear' ? @{https://img.icons8.com/color/20/000000/ok--v1.png} : @{https://img.icons8.com/color/20/000000/cancel--v1.png}"/>
                                             </span>
-                                            <input type="text" th:value="${violationRecord?.status} ? 'clear' : 'not clear'" disabled="true" class="form-control">
+                                            <input type="text" th:value="${violationStatus}" disabled="true" class="form-control">
                                             <br>
                                             <a data-bs-toggle="modal" href="#violation-record" role="button" class="btn btn-primary"><i class="fa-solid fa-circle-info"></i> Details</a>
                                         </div>
@@ -259,21 +262,20 @@
                                     </div>
                                     <div class="modal-body">
                                         <div>
-                                            Plate No: <b>[[${violationRecord?.plateNo}]]</b>
+                                            Plate No: <b>[[${plateNo}]]</b>
                                             <hr>
                                         </div>
                                         <div>
-                                            Violation Description: <b>[[${violationRecord?.violationCode?.description}]]</b><hr>
+                                            Violation Codes: <b th:each="violationRecord: ${violationRecordList}">[[${violationRecord?.violation_code}]] | </b><hr>
                                         </div>
                                         <div>
-                                            Date: <b>[[${#dates.format(violationRecord?.date, 'dd/MM/yyyy')}]]</b><hr>
+                                            Total Bill: <b>[[${totalCharges}]]</b><hr>
                                         </div>
-                                        <div>
-                                            Status: <b>[[${violationRecord?.status}? 'clear' : 'Not Clear']]</b>
-                                        </div>
+                                        
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Back</button>
+                                        <a type="button" th:href="@{'/charges/' + ${plateNo}}" class="btn btn-primary">Issue Ticket</a>
                                     </div>
                                 </div>
                             </div>
@@ -305,7 +307,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                            <div class="text-muted">Copyright &copy; WisdomTech 2022</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;

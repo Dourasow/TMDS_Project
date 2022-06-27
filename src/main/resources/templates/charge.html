@@ -15,23 +15,24 @@
 <div class="card card-4" style="margin: 4rem 4rem 4rem 4rem;">
     <div class="card-body">
         <h2 class="title">Violation Form</h2>
-        <form method="POST">
+        <form method="post" th:action="@{/charges/add}">
             <div class="row row-space">
                 <div class="col-2">
                     <div class="input-group">
                         <label class="label">Plate</label>
-                        <input class="input--style-4" type="text" name="plateNo">
+                        <input class="input--style-4" type="text" name="plateNo" th:value="${plateNo} ?: ''" th:if="${plateNo} ne null" readonly>
+                        <input class="input--style-4" type="text" name="plateNo" th:value="${plateNo} ?: ''" th:unless="${plateNo} ne null">
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="input-group">
-                        <label class="label">Violation</label>
-                          <select id="multi_option" multiple name="native-select" placeholder="Violation Options" data-silent-initial-value-set="false"
-                          	th:each="violationCode : ${violationCodes}">
+                        <label class="label">Violation Code</label>
+                          <select id="multi_option" multiple name="v_code" placeholder="Violation Options" data-silent-initial-value-set="false">
                           	
-                            <option th:text="${violationCode.description}"
+                            <option th:each="violationCode : ${violationCodes}"
+                            	th:text="${violationCode.description}"
                             	th:name="${violationCode.id}"
-                            	th:id="${violationCode.id}">
+                            	th:value="${violationCode.id}">
                             	Default
                             </option>
                             
@@ -40,24 +41,10 @@
                 </div>
             </div>
             
-            <div class="row row-space">
-                <div class="col-2">
-                    <div class="input-group">
-                        <label class="label">Date</label>
-                        <input class="input--style-4" type="date" name="date" >
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="input-group">
-                        <label class="label">Violation codes</label>
-                        <input class="input--style-4" type="text" name="phone" disabled="true">
-                    </div>
-                </div>
-            </div>
             
             <div class="p-t-15">
                 <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
-                <button class="btn btn--radius-2 btn--blue" type="button" id="btnz">Back</button>
+                <a th:href="@{/home}" class="btn btn--radius-2 btn-primary" id="btnz">Back</a>
             </div>
         </form>
     </div>

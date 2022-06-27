@@ -54,8 +54,8 @@ public class ViolationRecordController {
     }
 
     @GetMapping("/search/{plateNo}")
-    public ViolationRecord findByPlateNo(@PathVariable("plateNo") String plateNo){
-        return violationRecordService.findByPlateNo(plateNo);
+    public List<ViolationRecord> findByPlateNoAndClear(@PathVariable("plateNo") String plateNo){
+        return violationRecordService.findByPlateNoAndClear(plateNo, false);
     }
     
 }

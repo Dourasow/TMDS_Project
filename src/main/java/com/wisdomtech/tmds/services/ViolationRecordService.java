@@ -30,8 +30,8 @@ public class ViolationRecordService {
         violationRecordRepo.deleteById(id);
     }
 
-    public ViolationRecord findByPlateNo(String plateNo){
-        return violationRecordRepo.findByPlateNo(plateNo);
+    public List<ViolationRecord> findByPlateNoAndClear(String plateNo, Boolean status){
+        return violationRecordRepo.findByPlateNoAndClear(plateNo, status);
     }
 
 }

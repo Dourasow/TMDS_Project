@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class SearchRecordsController {
@@ -33,7 +34,7 @@ public class SearchRecordsController {
 
         System.out.println("Plate Number: " + plateNo);
 
-        ViolationRecord violationRecord = violationRecordService.findByPlateNo(plateNo);
+        List<ViolationRecord> violationRecordList = violationRecordService.findByPlateNoAndClear(plateNo, false);
         MechanicalRecord mechanicalRecord = mechanicalRecordService.findByPlateNo(plateNo);
         InsuranceRecord insuranceRecord = insuranceRecordService.findByPlateNo(plateNo);
 
@@ -41,11 +42,30 @@ public class SearchRecordsController {
 //        System.out.println("Mechanical Record: " + mechanicalRecord.getPlateNo());
 //        System.out.println("Insurance Record: " + insuranceRecord.getPlateNo());
 
-        redirectAttributes.addFlashAttribute("violationRecord", violationRecord);
+        redirectAttributes.addFlashAttribute("violationRecordList", violationRecordList);
         redirectAttributes.addFlashAttribute("mechanicalRecord", mechanicalRecord);
         redirectAttributes.addFlashAttribute("insuranceRecord", insuranceRecord);
+        
+        if(!violationRecordList.isEmpty()) {
+        	String violationStatus = "clear";
+        	Double totalCharges = 0.00;
+        	
+        	System.out.println("I am here");
+        	for (ViolationRecord _violationRecord : violationRecordList) {
+        		totalCharges += _violationRecord.getViolationCode().getChargeAmount();
+        		
+    			if(_violationRecord.isStatus() == false) {
+    				violationStatus = "not clear";
+    				System.out.println("I am here 2");
+    			}
+    		}
+        	
+        	redirectAttributes.addFlashAttribute("totalCharges", totalCharges);
+			redirectAttributes.addFlashAttribute("violationStatus", violationStatus);
+			redirectAttributes.addFlashAttribute("plateNo", plateNo);
+        }
 
-        if (violationRecord == null && mechanicalRecord == null && insuranceRecord == null){
+        if (violationRecordList.isEmpty() && mechanicalRecord == null && insuranceRecord == null){
             redirectAttributes.addFlashAttribute("foundStatus", false);
             redirectAttributes.addFlashAttribute("responseMessage", "Plate Does Not Exits!");
         }else{

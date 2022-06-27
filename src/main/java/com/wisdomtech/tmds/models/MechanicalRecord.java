@@ -1,6 +1,5 @@
 package com.wisdomtech.tmds.models;
 
-import com.wisdomtech.tmds.models.Garage;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;

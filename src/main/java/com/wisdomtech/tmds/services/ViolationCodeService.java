@@ -2,7 +2,6 @@ package com.wisdomtech.tmds.services;
 
 import com.wisdomtech.tmds.models.ViolationCode;
 import com.wisdomtech.tmds.repositories.ViolationCodeRepo;
-import com.wisdomtech.tmds.repositories.ViolationRecordRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
