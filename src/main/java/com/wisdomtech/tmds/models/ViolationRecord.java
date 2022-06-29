@@ -10,7 +10,16 @@ import java.util.Objects;
 public class ViolationRecord {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(
+            name = "violationRecord_sequence",
+            sequenceName = "violationRecord_sequence",
+            allocationSize = 1,
+            initialValue = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "violationRecord_sequence"
+    )
     private Long id;
 
     private String plateNo;

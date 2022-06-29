@@ -10,7 +10,16 @@ import java.util.Objects;
 public class ViolationCode {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(
+            name = "violationCode_sequence",
+            sequenceName = "violationCode_sequence",
+            allocationSize = 1,
+            initialValue = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "violationCode_sequence"
+    )
     private Long id;
 
     private String code;

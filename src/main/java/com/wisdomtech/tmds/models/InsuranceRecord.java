@@ -10,7 +10,16 @@ import java.util.Objects;
 public class InsuranceRecord {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(
+            name = "insuranceRecord_sequence",
+            sequenceName = "insuranceRecord_sequence",
+            allocationSize = 1,
+            initialValue = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "insuranceRecord_sequence"
+    )
     private Long id;
 
     private String plateNo;

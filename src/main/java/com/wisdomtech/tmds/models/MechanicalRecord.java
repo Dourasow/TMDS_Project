@@ -10,7 +10,16 @@ import java.util.Objects;
 public class MechanicalRecord {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(
+            name = "mechanicalRecord_sequence",
+            sequenceName = "mechanicalRecord_sequence",
+            allocationSize = 1,
+            initialValue = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "mechanicalRecord_sequence"
+    )
     private Long id;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")

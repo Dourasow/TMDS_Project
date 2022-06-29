@@ -10,7 +10,16 @@ import java.util.Objects;
 public class Vendor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(
+            name = "vendor_sequence",
+            sequenceName = "vendor_sequence",
+            allocationSize = 1,
+            initialValue = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "vendor_sequence"
+    )
     private Long id;
     private String brand;
     private String description;

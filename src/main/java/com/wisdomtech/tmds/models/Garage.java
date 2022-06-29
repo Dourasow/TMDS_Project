@@ -7,7 +7,16 @@ import java.util.Objects;
 @Entity
 public class Garage {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(
+            name = "garage_sequence",
+            sequenceName = "garage_sequence",
+            allocationSize = 1,
+            initialValue = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "garage_sequence"
+    )
     private Long garage_code;
 
     private String description;
