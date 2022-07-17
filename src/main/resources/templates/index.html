@@ -1,330 +1,590 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>TDMS - Dashboard</title>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css" integrity="sha512-xX2rYBFJSj86W54Fyv1de80DWBq7zYLn2z0I9bIhQG+rxIF6XVJUpdGnsNHWRa6AvP89vtFupEPDP8eZAtu9qA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
-        <link href="css/main.css" rel="stylesheet">
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-    </head>
-    <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" th:href="@{/}">TDMS Project</a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>TDMS</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+<section id="container" class="">
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">TDMS Project</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>
+            <span class="badge bg-primary badge-number">4</span>
+          </a><!-- End Notification Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <li class="dropdown-header">
+              You have 4 new notifications
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-exclamation-circle text-warning"></i>
+              <div>
+                <h4>Lorem Ipsum</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>30 min. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-x-circle text-danger"></i>
+              <div>
+                <h4>Atque rerum nesciunt</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>1 hr. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-check-circle text-success"></i>
+              <div>
+                <h4>Sit rerum fuga</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>2 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-info-circle text-primary"></i>
+              <div>
+                <h4>Dicta reprehenderit</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>4 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Show all notifications</a>
+            </li>
+
+          </ul><!-- End Notification Dropdown Items -->
+
+        </li><!-- End Notification Nav -->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-chat-left-text"></i>
+            <span class="badge bg-success badge-number">3</span>
+          </a><!-- End Messages Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+            <li class="dropdown-header">
+              You have 3 new messages
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Maria Hudson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>4 hrs. ago</p>
                 </div>
-            </form>
-            <!-- Navbar-->
-            
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
 
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <!-- <div class="sb-sidenav-menu-heading">Core</div> -->
-                            <a class="nav-link" th:href="@{/}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
-                            </a>
-                            <!-- <div class="sb-sidenav-menu-heading">Interface</div> -->
-                            <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Layouts
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a> -->
-                            <!-- <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
-                                </nav>
-                            </div> -->
-                            <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Pages
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a> -->
-                            <!-- <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Authentication
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="login.html">Login</a>
-                                            <a class="nav-link" href="register.html">Register</a>
-                                            <a class="nav-link" href="password.html">Forgot Password</a>
-                                        </nav>
-                                    </div>
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                        Error
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="401.html">401 Page</a>
-                                            <a class="nav-link" href="404.html">404 Page</a>
-                                            <a class="nav-link" href="500.html">500 Page</a>
-                                        </nav>
-                                    </div>
-                                </nav>
-                            </div> -->
-                            
-                        </div>
-                    </div>
-                    
-                </nav>
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Anna Nelson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>6 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>David Muldon</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>8 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="dropdown-footer">
+              <a href="#">Show all messages</a>
+            </li>
+
+          </ul><!-- End Messages Dropdown Items -->
+
+        </li><!-- End Messages Nav -->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">Julius</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Julius</h6>
+              <span>Web Designer</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>Need Help?</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="index.html">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav1" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Garage</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav1" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/garage">
+              <i class="bi bi-circle"></i><span>Garage Home</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav2" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Vendor</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Vendor Home</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav3" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Insurance</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav3" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Insurance Home</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav4" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Mechanical</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav4" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Mechanical Record</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav5" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Violations</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav5" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Violation Code</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Violation Record</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </aside><!-- End Sidebar-->
+
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+
+
+    <div class="container-fluid px-4">
+      <div layout:fragment="content">
+        <p>Changing contents</p>
+      </div>
+
+
+      <dv class="row container ">
+          <div class="form-wrapper row col-lg-12 mb-4">
+            <div class="text-danger" th:if="${responseMessage} != null">
+              <h4>[[${responseMessage}]]</h4>
             </div>
+            <div>
+              <h4 class="text-primary">[[${receipt}]]</h4>
+            </div>
+            <form th:action = "@{/searchRecord}" th:method="Get">
+              <div class="form-group col-lg-8 mb-4">
+                <!-- <label for="plate">Plate</label> -->
+                <input type="text" required name="plateNo" class="form-control" id="plateNo" placeholder="REX9988998">
+              </div>
+              <div class="form-group col-lg-4 mb-4">
+                                 <input type="submit" value="Search" class="form-control btn-primary">
+              </div>
+            </form>
+          </div>
 
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid px-4">
-
-                        <dv class="row container ">
-                            <div class="form-wrapper row col-lg-12 mb-4">
-                                <div class="text-danger" th:if="${responseMessage} != null">
-                                    <h4>[[${responseMessage}]]</h4>
-                                </div>
-                                <div>
-                                	<h4 class="text-primary">[[${receipt}]]</h4>
-                                </div>
-                                <form th:action = "@{/searchRecord}" th:method="Get">
-                                   <div class="form-group col-lg-8 mb-4">
-                                       <!-- <label for="plate">Plate</label> -->
-                                       <input type="text" required name="plateNo" class="form-control" id="plateNo" placeholder="REX9988998">
-                                   </div>
-                                   <div class="form-group col-lg-4 mb-4">
-                                    <span>
-                                       <img src="https://img.icons8.com/color/18/000000/search--v1.png"/>
-                                    </span>
-
-                                       <input type="submit" value="Search" class="form-control btn-primary">
-                                   </div>
-                                </form>
-                            </div>
-
-                            <div class="content-details row" th:if="${foundStatus} == true">
-                                <div class="col-lg-4 mb-4">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Insurance</h5>
-                                            <hr>
-                                            Plate: 
-                                                  <input type="text" th:value="${insuranceRecord?.plateNo} ?: 'Not Insured'" class="form-control" placeholder="REX9988998" disabled="true" />
-                                            Status: 
-                                            <span>
+          <div class="content-details row" th:if="${foundStatus} == true">
+            <div class="col-lg-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Insurance</h5>
+                  <hr>
+                  Plate:
+                  <input type="text" th:value="${insuranceRecord?.plateNo} ?: 'Not Insured'" class="form-control" placeholder="REX9988998" disabled="true" />
+                  Status:
+                  <span>
                                                     <img th:src="${insuranceStatus}? @{https://img.icons8.com/color/20/000000/ok--v1.png} : @{https://img.icons8.com/color/20/000000/cancel--v1.png}"/>
                                             </span>
-                                            <input type="text" th:value="${insuranceStatus} ? clear : not_clear" disabled="true" class="form-control">
-                                            <br>
-                                            <button data-bs-toggle="modal" href="#exampleModalToggle" role="button" class="btn btn-primary" aria-disabled="${insuranceStatus}? true :false"><i class="fa-solid fa-circle-info"></i> Details</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 mb-4">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Mechanical Check</h5>
-                                            <hr>
-                                            Plate: 
-                                                  <input type="text" th:value="${mechanicalRecord?.plateNo} ?: 'No Record'" class="form-control" placeholder="REX9988998" disabled="true" />
-                                            Status:
+                  <input type="text" th:value="${insuranceStatus} ? clear : not_clear" disabled="true" class="form-control">
+                  <br>
+                  <button data-bs-toggle="modal" href="#exampleModalToggle" role="button" class="btn btn-primary" aria-disabled="${insuranceStatus}? true :false"><i class="fa-solid fa-circle-info"></i> Details</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Mechanical Check</h5>
+                  <hr>
+                  Plate:
+                  <input type="text" th:value="${mechanicalRecord?.plateNo} ?: 'No Record'" class="form-control" placeholder="REX9988998" disabled="true" />
+                  Status:
 
-                                            <span>
+                  <span>
                                                 <img th:src="${mechanicalCheckStatus}? @{https://img.icons8.com/color/20/000000/ok--v1.png} : @{https://img.icons8.com/color/20/000000/cancel--v1.png}"/>
                                             </span>
 
-                                            <input type="text" th:value="${mechanicalCheckStatus}? clear : not_clear" disabled="true" class="form-control">
-                                            <br>
-                                            <a data-bs-toggle="modal" href="#mechanical-check" role="button" class="btn btn-primary" disabled="${mechanicalCheckStatus}? true :false"><i class="fa-solid fa-circle-info"></i> Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 mb-4">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Violation Record</h5>
-                                            <hr>
-                                            Plate: 
-                                                  <input type="text" class="form-control" th:value="${plateNo} ?: 'No Record'" placeholder="REX9988998" disabled="true" />
-                                            Status:
-                                            <span>
+                  <input type="text" th:value="${mechanicalCheckStatus}? clear : not_clear" disabled="true" class="form-control">
+                  <br>
+                  <a data-bs-toggle="modal" href="#mechanical-check" role="button" class="btn btn-primary" disabled="${mechanicalCheckStatus}? true :false"><i class="fa-solid fa-circle-info"></i> Details</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Violation Record</h5>
+                  <hr>
+                  Plate:
+                  <input type="text" class="form-control" th:value="${plateNo} ?: 'No Record'" placeholder="REX9988998" disabled="true" />
+                  Status:
+                  <span>
                                                 <img th:src="${violationStatus} == 'clear' ? @{https://img.icons8.com/color/20/000000/ok--v1.png} : @{https://img.icons8.com/color/20/000000/cancel--v1.png}"/>
                                             </span>
-                                            <input type="text" th:value="${violationStatus}" disabled="true" class="form-control">
-                                            <br>
-                                            <a data-bs-toggle="modal" href="#violation-record" role="button" class="btn btn-primary"><i class="fa-solid fa-circle-info"></i> Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div th:unless="${foundStatus} == true">
-                                <h2>Welcome Here</h2>
-                            </div>
-                        </dv>
-
-<!--                        Modals -->
-                        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                          <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalToggleLabel">Insurance Details</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">
-                                  <div>
-                                      Plate No: <b>[[${insuranceRecord?.plateNo}]]</b>
-                                      <hr>
-                                  </div>
-                                  <div>
-                                      Date Issued: <b>[[${#dates.format(insuranceRecord?.dateInsured, 'dd/MM/yyy')}]]</b><hr>
-                                  </div>
-                                  <div>
-                                      Date Expired: <b>[[${#dates.format(insuranceRecord?.dateExpire, 'dd/MM/yyyy')}]]</b><hr>
-                                  </div>
-                                  <div>
-                                      Vendor: <b>[[${insuranceRecord?.vendor?.brand}]]</b>
-                                  </div>
-                              </div>
-                              <div class="modal-footer">
-                                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Back</button>
-<!--                                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal" th:unless="${insuranceRecord} ne null">Back</button>-->
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="modal fade" id="mechanical-check" aria-hidden="true" aria-labelledby="mechanicalCheckModalToggleLabel" tabindex="-1">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="mechanicalCheckModalToggleLabel">Mechanical Record Details</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div>
-                                            Plate No: <b>[[${mechanicalRecord?.plateNo}]]</b>
-                                            <hr>
-                                        </div>
-                                        <div>
-                                            Date Issued: <b>[[${#dates.format(mechanicalRecord?.expectedServiceDate, 'dd/MM/yyy')}]]</b><hr>
-                                        </div>
-                                        <div>
-                                            Date Expired: <b>[[${#dates.format(mechanicalRecord?.lastDateServiced, 'dd/MM/yyyy')}]]</b><hr>
-                                        </div>
-                                        <div>
-                                            Vendor: <b>[[${mechanicalRecord?.garage?.description}]]</b>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Back</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="modal fade" id="violation-record" aria-hidden="true" aria-labelledby="violationRecordModalToggleLabel" tabindex="-1">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="violationRecordModalToggleLabel">Mechanical Record Details</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div>
-                                            Plate No: <b>[[${plateNo}]]</b>
-                                            <hr>
-                                        </div>
-                                        <div>
-                                            Violation Codes: <b th:each="violationRecord: ${violationRecordList}">[[${violationRecord?.violation_code}]] | </b><hr>
-                                        </div>
-                                        <div>
-                                            Total Bill: <b>[[${totalCharges}]]</b><hr>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Back</button>
-                                        <a type="button" th:href="@{'/charges/' + ${plateNo}}" class="btn btn-primary">Issue Ticket</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="ViolationRecordModalToggleLabel2" tabindex="-1">
-                          <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="ViolationRecordModalToggleLabel2">Modal 2</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">
-                                Hide this modal and show the first with the button below.
-                              </div>
-                              <div class="modal-footer">
-                                <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                       	<div class="text-center">
-							<a type="button" th:href="@{/charges}" class="btn btn-danger" id="myButton"><i class="fa-solid fa-plus"></i> Add charge</a>
-                       	</div>
-                        
-                    </div>
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; WisdomTech 2022</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                  <input type="text" th:value="${violationStatus}" disabled="true" class="form-control">
+                  <br>
+                  <a data-bs-toggle="modal" href="#violation-record" role="button" class="btn btn-primary"><i class="fa-solid fa-circle-info"></i> Details</a>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <div th:unless="${foundStatus} == true">
+            <h2>Welcome Here</h2>
+          </div>
+        </dv>
+
+        <!--                        Modals -->
+        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">Insurance Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div>
+                  Plate No: <b>[[${insuranceRecord?.plateNo}]]</b>
+                  <hr>
+                </div>
+                <div>
+                  Date Issued: <b>[[${#dates.format(insuranceRecord?.dateInsured, 'dd/MM/yyy')}]]</b><hr>
+                </div>
+                <div>
+                  Date Expired: <b>[[${#dates.format(insuranceRecord?.dateExpire, 'dd/MM/yyyy')}]]</b><hr>
+                </div>
+                <div>
+                  Vendor: <b>[[${insuranceRecord?.vendor?.brand}]]</b>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Back</button>
+                <!--                                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal" th:unless="${insuranceRecord} ne null">Back</button>-->
+              </div>
+            </div>
+          </div>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
-    </body>
+        <div class="modal fade" id="mechanical-check" aria-hidden="true" aria-labelledby="mechanicalCheckModalToggleLabel" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="mechanicalCheckModalToggleLabel">Mechanical Record Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div>
+                  Plate No: <b>[[${mechanicalRecord?.plateNo}]]</b>
+                  <hr>
+                </div>
+                <div>
+                  Date Issued: <b>[[${#dates.format(mechanicalRecord?.expectedServiceDate, 'dd/MM/yyy')}]]</b><hr>
+                </div>
+                <div>
+                  Date Expired: <b>[[${#dates.format(mechanicalRecord?.lastDateServiced, 'dd/MM/yyyy')}]]</b><hr>
+                </div>
+                <div>
+                  Vendor: <b>[[${mechanicalRecord?.garage?.description}]]</b>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Back</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="violation-record" aria-hidden="true" aria-labelledby="violationRecordModalToggleLabel" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="violationRecordModalToggleLabel">Mechanical Record Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div>
+                  Plate No: <b>[[${plateNo}]]</b>
+                  <hr>
+                </div>
+                <div>
+                  Violation Codes: <b th:each="violationRecord: ${violationRecordList}">[[${violationRecord?.violation_code}]] | </b><hr>
+                </div>
+                <div>
+                  Total Bill: <b>[[${totalCharges}]]</b><hr>
+                </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Back</button>
+                <a type="button" th:href="@{'/charges/' + ${plateNo}}" class="btn btn-primary">Issue Ticket</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="ViolationRecordModalToggleLabel2" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="ViolationRecordModalToggleLabel2">Modal 2</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Hide this modal and show the first with the button below.
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a type="button" th:href="@{/charges}" class="btn btn-danger" id="myButton"><i class="fa-solid fa-plus"></i> Add charge</a>
+        </div>
+
+      </div>
+  </main><!-- End #main -->
+</section>
+  <!--<footer class="py-4 bg-light mt-auto">
+    <div class="container-fluid px-4">
+      <div class="d-flex align-items-center justify-content-between small">
+        <div class="text-muted">Copyright &copy; WisdomTech 2022</div>
+        <div>
+          <a href="#">Privacy Policy</a>
+          &middot;
+          <a href="#">Terms &amp; Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>-->
+   <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.min.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
 </html>

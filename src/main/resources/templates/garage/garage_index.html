@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout.html">
+<body>
+
+<div layout:fragment="content">
+   <!--main content start-->
+   <main id="main" class="main">
+
+      <div class="pagetitle">
+         <h1>Data Tables</h1>
+         <nav>
+            <ol class="breadcrumb">
+               <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+               <li class="breadcrumb-item">Tables</li>
+               <li class="breadcrumb-item active">Data</li>
+            </ol>
+         </nav>
+      </div><!-- End Page Title -->
+
+      <section class="section">
+         <div class="row">
+            <div class="col-lg-12">
+
+               <div class="card">
+                  <div class="card-body">
+                     <h5 class="card-title">Garage</h5>
+                    <a href="/garageAdd" data-toggle="modal" class="btn btn-primary rounded-pill">Add Garage Record</a>
+
+                     <!-- Table with stripped rows -->
+                     <table class="table datatable">
+                        <thead>
+                        <tr>
+                           <th scope="col">#</th>
+                           <th scope="col">Manager Name</th>
+                           <th scope="col">Garage Code</th>
+                           <th scope="col">Address</th>
+                           <th scope="col">Phone Number</th>
+                           <th scope="col">Description</th>
+                           <th><i class="icon_cogs"></i> Action</th>
+                        </tr>
+                        <tr th:each="garage: ${garages}">
+                           <td th:text="${garage.manager_name}"></td>
+                           <td th:text="${garage.garage_code}"></td>
+                           <td th:text="${garage.address}"></td>
+                           <td th:text="${garage.phone}"></td>
+                           <td th:text="${garage.description}"></td>
+                           <td>
+                              <div class="btn-group">
+                                 <a class="btn btn-primary"
+                                    th:href="@{'/parameters/location/Details/'+${location.id}}"><i class="icon_plus_alt2"></i></a>
+                                 <a class="btn btn-success"
+                                    th:href="@{'/parameters/location/Edit/'+${location.id}}"><i class="icon_check_alt2"></i></a>
+                                 <a class="btn btn-danger"
+                                    onclick="return confirm('Are you sure you want to delete')
+                                                " th:href="@{'/parameters/locations/delete/'+${location.id}}"><i class="icon_close_alt2"></i></a>
+                              </div>
+                           </td>
+                        </tr>
+                        </thead>
+
+
+                     </table>
+                     <!-- End Table with stripped rows -->
+
+                  </div>
+               </div>
+
+            </div>
+         </div>
+      </section>
+
+   </main>
+</div>
+
+</body>
+</html>

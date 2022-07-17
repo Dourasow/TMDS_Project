@@ -17,7 +17,7 @@ public class Garage {
             strategy = GenerationType.SEQUENCE,
             generator = "garage_sequence"
     )
-    private Long garage_code;
+    private int garage_code;
 
     private String description;
     private String address;
@@ -27,7 +27,7 @@ public class Garage {
     @OneToMany(mappedBy = "garage")
     private List<MechanicalRecord> mechanicalRecord;
 
-    public Garage(Long garage_code, String description, String address, String managerName, String phone, List<MechanicalRecord> mechanicalRecord) {
+    public Garage(int garage_code, String description, String address, String managerName, String phone, List<MechanicalRecord> mechanicalRecord) {
         this.garage_code = garage_code;
         this.description = description;
         this.address = address;
@@ -39,11 +39,11 @@ public class Garage {
     public Garage() {
     }
 
-    public Long getGarage_code() {
+    public int getGarage_code() {
         return garage_code;
     }
 
-    public void setGarage_code(Long garage_code) {
+    public void setGarage_code(int garage_code) {
         this.garage_code = garage_code;
     }
 

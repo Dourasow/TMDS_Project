@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface GarageRepo extends JpaRepository<Garage, Long> {
+public interface GarageRepo extends JpaRepository<Garage, Integer> {
 }

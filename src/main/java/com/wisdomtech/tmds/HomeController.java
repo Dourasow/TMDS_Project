@@ -20,5 +20,15 @@ public class HomeController {
     public String register(){
         return "register";
     }
-    
+
+    @GetMapping(value = {"/layout"})
+    public String layout(){
+        return "layout";
+    }
+
+    @GetMapping("/garage")
+    public String garage() {
+        return "/garage/garage_index";
+    }
+
 }

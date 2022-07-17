@@ -12,22 +12,48 @@ import java.util.Optional;
 public class GarageService {
 
     @Autowired
-    private GarageRepo insuranceRecordRepo;
+    private GarageRepo garageRepo;
 
-    public Garage save(Garage insuranceRecord){
-        return insuranceRecordRepo.save(insuranceRecord);
+    //Get All
+    public List<Garage> findAll()
+    {
+        return garageRepo.findAll();
     }
 
-    public List<Garage> findAll(){
-        return insuranceRecordRepo.findAll();
+    public void save(Garage garage)
+    {
+        garageRepo.save(garage);
     }
 
-    public Optional<Garage> findById(Long id){
-        return insuranceRecordRepo.findById(id);
+    public void delete(Integer id)
+    {
+        garageRepo.delete(garageRepo.getById(id));
     }
 
-    public void deleteById(Long id){
-        insuranceRecordRepo.deleteById(id);
+    public Garage findById(Integer id) {
+        return garageRepo.findById(id).orElse(null);
     }
 
 }
+
+  /*  public Garage save(Garage garage){
+        return garageRepo.save(garage);
+    }
+
+    public List<Garage> findAll(){
+        return garageRepo.findAll();
+    }
+
+    public Optional<Garage> findById(int id){
+        return garageRepo.findById((long) id);
+    }
+
+    public Garage findById(Integer id) {
+        return garageRepo.findById(id.longValue()).orElse(null);
+    }
+
+    public void deleteById(Long id){
+        garageRepo.deleteById(id);
+    }
+
+}*/

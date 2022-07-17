@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout.html">
+<body>
+
+<div layout:fragment="content">
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Data Tables</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">Tables</li>
+                    <li class="breadcrumb-item active">Data</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Garage</h5>
+                            <a href="/garage" data-toggle="modal" class="btn btn-primary rounded-pill">Go Back</a>
+
+                            <!-- Table with stripped rows -->
+                            <div class="container" style="width: 60%">
+                                <div class="row">
+
+                                <form class="form-horizontal " th:action="@{/garage}" method="post">
+                                <div class="col-lg-12">
+                                    <section class="panel">
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4">Manager Name</label>
+                                                <div class="col-sm-12">
+                                                    <input name="manager_name" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4">Garage Code</label>
+                                                <div class="col-sm-12">
+                                                    <input name="garage_code" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4">Address</label>
+                                                <div class="col-sm-12">
+                                                    <input name="address" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4">Phone Number</label>
+                                                <div class="col-sm-12">
+                                                    <div class="input-prepend">
+                                                        <input name="phone_number" class=" form-control" size="16" type="text" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4">Description</label>
+                                                <div class="col-sm-12">
+                                                    <input name="description" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <section class="panel">
+                                            <div class="panel-body">
+                                                <button type="submit" class="btn btn-success">Save</button>
+                                                <a href="/garage_index" data-toggle="modal" class="btn btn-warning">Exit</a>
+                                            </div>
+                                        </section>
+                                    </section>
+                                </div>
+                            </form>
+                                </div>
+                            </div>
+
+                            <!-- End Table with stripped rows -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+</div>
+</body>
+</html>

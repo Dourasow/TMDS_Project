@@ -14,7 +14,7 @@
 	<name>tmds</name>
 	<description>Traffic Malfunctioning Detection System</description>
 	<properties>
-		<java.version>18</java.version>
+		<java.version>17</java.version>
 		<!-- <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding> -->
 	</properties>
@@ -41,20 +41,53 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<!-- <dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency> -->
+		</dependency>
+		<dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+		</dependency>-->
 		<dependency>
       	<groupId>org.springframework.boot</groupId>
       		<artifactId>spring-boot-devtools</artifactId>
       		<scope>runtime</scope>
-    	</dependency> -->
+    	</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>3.3.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap-datepicker</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>1.9.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
